@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="ConneXtion - Sistema de Gestión de Solicitudes">
+        <meta name="author" content="">
+
+        <title>ConneXtion</title>
+
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    </head>
+
+    <body id="page-top">
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">ConneXtion</div>
+                </a>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider">
+
+                <div class="sidebar-heading">
+                    Gestión
+                </div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="issues-list.html">
+                        <i class="fas fa-fw fa-list"></i>
+                        <span>Solicitudes Registradas</span>
+                    </a>
+                </li>
+
+                <div class="sidebar-heading">
+                    Registro
+                </div>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="log.html">
+                        <i class="fas fa-fw fa-list"></i>
+                        <span>Ver bitácoras</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <li class="nav-item mt-auto px-3 mb-3">
+                    <button id="btnLogout" type="button" class="btn btn-danger btn-block">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </li>
+
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+            </ul>
+            <!-- End of Sidebar -->
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                        <ul class="navbar-nav ml-auto">
+
+                            <div class="topbar-divider d-none d-sm-block"></div>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="d-none d-lg-flex flex-column align-items-end mr-2">
+                                        <span id="sessionUserName" class="text-gray-600 small font-weight-bold"></span>
+                                        <span id="sessionUserRole" class="text-gray-600 small font-weight-bold" style="font-size: 0.70rem;"></span>
+                                    </div>
+                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Perfil
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Configuración
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" id="btnLogoutDropdown" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Salir
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+
+                    <!-- Begin Page Content -->
+                    <div class="container-fluid">
+
+                        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 70vh;">
+
+                            <div class="text-center mb-5">
+                                <i class="fas fa-headset fa-4x text-primary mb-4" style="opacity: 0.85;"></i>
+                                <h1 class="h1 font-weight-bold text-gray-800 mb-3">
+                                    Bienvenido a ConneXtion
+                                </h1>
+                                <p class="text-gray-500 mb-1" style="font-size: 1.1rem;">
+                                    Sistema de Gestión de Solicitudes
+                                </p>
+                                <p class="text-gray-400" style="font-size: 0.95rem;">
+                                    Seleccione una opción del menú izquierdo para continuar.
+                                </p>
+                            </div>
+
+                            <div class="row justify-content-center" style="max-width: 600px; width: 100%;">
+                                <div class="col-6 mb-3">
+                                    <a href="issues-list.html" class="card border-left-primary shadow h-100 py-3 text-decoration-none">
+                                        <div class="card-body text-center py-2">
+                                            <i class="fas fa-list fa-2x text-primary mb-2"></i>
+                                            <div class="font-weight-bold text-gray-700" style="font-size: 0.85rem;">Solicitudes Registradas</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <a href="log.html" class="card border-left-info shadow h-100 py-3 text-decoration-none">
+                                        <div class="card-body text-center py-2">
+                                            <i class="fas fa-clipboard-list fa-2x text-info mb-2"></i>
+                                            <div class="font-weight-bold text-gray-700" style="font-size: 0.85rem;">Ver Bitácoras</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; ConneXtion 2026</span>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+            <!-- End of Content Wrapper -->
+
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">¿Salir?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Seleccione "Salir" si está listo para cerrar su sesión.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="login.html">Salir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="js/auth.js"></script>
+
+    </body>
+
+</html>

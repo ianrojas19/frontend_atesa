@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>ConneXtion - Detalle de Solicitud</title>
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,800,900" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    </head>
+    <body id="page-top">
+
+        <div id="wrapper">
+
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon"><i class="fas fa-headset"></i></div>
+                    <div class="sidebar-brand-text mx-3">ConneXtion</div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-fw fa-tachometer-alt"></i><span>Inicio</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading">Gestión de Solicitudes</div>
+                <li class="nav-item active">
+                    <a class="nav-link" href="issues-list.html">
+                        <i class="fas fa-fw fa-list"></i><span>Solicitudes Registradas</span>
+                    </a>
+                </li>
+                
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Registro
+                </div>
+
+                <!-- Nav Item - Solicitudes -->
+                <li class="nav-item">
+                    <a class="nav-link" href="log.html">
+                        <i class="fas fa-fw fa-list"></i>
+                        <span>Ver bitácoras</span>
+                    </a>
+                </li>
+                
+                <hr class="sidebar-divider d-none d-md-block">
+                
+                <li class="nav-item mt-auto px-3 mb-3">
+                    <button id="btnLogout" type="button" class="btn btn-danger btn-block">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Cerrar sesión</span>
+                    </button>
+                </li>
+                
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <h5 class="m-0 font-weight-bold text-primary ml-3">Detalle de Solicitud</h5>
+                        <ul class="navbar-nav ml-auto">
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="userNameDisplay">Soporte</span>
+                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Cerrar Sesión
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="container-fluid">
+
+                        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                            <h1 class="h3 mb-0 text-gray-800">
+                                Solicitud <span id="issueIdTitle">#...</span>
+                            </h1>
+                            <a href="issues-list.html" class="btn btn-sm btn-secondary shadow-sm">
+                                <i class="fas fa-arrow-left fa-sm"></i> Volver al listado
+                            </a>
+                        </div>
+
+                        <div id="loadingMsg" class="text-center py-5">
+                            <i class="fas fa-spinner fa-spin fa-3x text-primary"></i>
+                            <p class="mt-3 text-gray-600">Cargando solicitud...</p>
+                        </div>
+
+                        <div id="mainContent" class="d-none">
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-ticket-alt mr-1"></i> Información de la Solicitud
+                                            </h6>
+                                            <span id="statusBadge" class="badge p-2"></span>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-borderless table-sm mb-0">
+                                                <tbody>
+                                                    <tr><th width="40%">N° Solicitud</th><td><strong id="issueId">-</strong></td></tr>
+                                                    <tr><th>Descripción</th><td id="issueDescription">-</td></tr>
+                                                    <tr><th>Servicio</th><td id="issueService">-</td></tr>
+                                                    <tr><th>Fecha Registro</th><td id="issueTimestamp">-</td></tr>
+                                                    <tr><th>Clasificación</th><td><span class="badge badge-info p-1">Media</span></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-address-card mr-1"></i> Datos de Contacto
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-borderless table-sm mb-0">
+                                                <tbody>
+                                                    <tr><th width="40%">Teléfono</th><td id="contactPhone">-</td></tr>
+                                                    <tr><th>Correo</th><td id="contactEmail">-</td></tr>
+                                                    <tr><th>Dirección</th><td id="contactAddress">-</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-user-check mr-1"></i> Soportista Asignado
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="mb-2">
+                                                <strong>Asignado:</strong>
+                                                <span id="assignedSupporter" class="text-muted">Sin asignar</span>
+                                            </p>
+                                            <div id="assignSection">
+                                                <div class="form-group mb-2">
+                                                    <label for="supporterSelect">Asignar a:</label>
+                                                    <select class="form-control form-control-sm" id="supporterSelect">
+                                                        <option value="">-- Seleccione soportista --</option>
+                                                    </select>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" id="btnAssign">
+                                                    <i class="fas fa-save"></i> Guardar asignación
+                                                </button>
+                                                <div id="assignMsg"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-tasks mr-1"></i> Acciones
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <button class="btn btn-warning btn-sm mr-2 mb-2" id="btnStart" disabled>
+                                                <i class="fas fa-play"></i> Iniciar Proceso
+                                            </button>
+
+                                            <button class="btn btn-success btn-sm mb-2" id="btnResolve">
+                                                <i class="fas fa-check"></i> Resolver Solicitud
+                                            </button>
+
+                                            <div id="resolveSection" class="d-none mt-3 p-3 border rounded bg-light">
+                                                <h6 class="font-weight-bold text-success mb-3">
+                                                    <i class="fas fa-check-circle mr-1"></i> Resolver Solicitud
+                                                </h6>
+                                                <div class="form-group mb-2">
+                                                    <label for="resolutionComment">
+                                                        Comentario de resolución <span class="text-danger">*</span>
+                                                    </label>
+                                                    <textarea class="form-control form-control-sm" id="resolutionComment"
+                                                              rows="3" placeholder="Describa cómo se resolvió el caso..."></textarea>
+                                                </div>
+                                                <button class="btn btn-success btn-sm" id="btnConfirmResolve">
+                                                    <i class="fas fa-check-double"></i> Confirmar Resolución
+                                                </button>
+                                                <button class="btn btn-secondary btn-sm ml-2" id="btnCancelResolve">
+                                                    <i class="fas fa-times"></i> Cancelar
+                                                </button>
+                                            </div>
+
+                                            <div id="actionMsg"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-sticky-note mr-1"></i> Notas Técnicas
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="notesList" class="mb-3" style="max-height:200px; overflow-y:auto;">
+                                                <p class="text-muted small mb-0">Sin notas técnicas.</p>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <textarea class="form-control form-control-sm" id="newNote"
+                                                          rows="2" placeholder="Agregar nota técnica..."></textarea>
+                                            </div>
+                                            <button class="btn btn-info btn-sm" id="btnAddNote">
+                                                <i class="fas fa-plus"></i> Agregar nota
+                                            </button>
+                                            <div id="noteMsg"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-comments mr-1"></i> Comentarios
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="commentsList" class="mb-3" style="max-height:200px; overflow-y:auto;">
+                                                <p class="text-muted small mb-0">Cargando comentarios...</p>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <textarea class="form-control form-control-sm" id="newComment"
+                                                          rows="2" placeholder="Agregar comentario..."></textarea>
+                                            </div>
+                                            <button class="btn btn-primary btn-sm" id="btnAddComment">
+                                                <i class="fas fa-paper-plane"></i> Enviar comentario
+                                            </button>
+                                            <div id="commentMsg"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- CHAT INTERFACE -->
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header py-3">
+                                            <h6 class="m-0 font-weight-bold text-primary">
+                                                <i class="fas fa-comments"></i> Chat en tiempo real
+                                            </h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div id="chatMessages" class="mb-3 p-3 border rounded" style="height: 300px; overflow-y: auto; background-color: #f8f9fc;">
+                                                <div class="text-center text-muted small">Cargando chat...</div>
+                                            </div>
+                                            <form id="chatForm" class="d-flex">
+                                                <input type="text" id="chatInput" class="form-control form-control-sm mr-2" placeholder="Escribe un mensaje..." required>
+                                                <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-paper-plane"></i> Enviar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; ConneXtion 2026</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">¿Cerrar sesión?</h5>
+                        <button class="close" type="button" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">¿Está seguro que desea cerrar la sesión actual?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="login.html" id="confirmLogout">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="js/issue-detail.js"></script>
+    </body>
+</html>

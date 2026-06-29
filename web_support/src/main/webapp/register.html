@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="ConneXtion - Registro de usuarios de soporte">
+    <meta name="author" content="ConneXtion">
+
+    <title>ConneXtion - Registro de Usuario de Soporte</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        .bg-register-brand {
+            background: linear-gradient(160deg, #0d2b6b 0%, #1a5aad 55%, #2596e1 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+        }
+
+        .bg-register-brand::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            top: -80px;
+            left: -80px;
+        }
+
+        .bg-register-brand::after {
+            content: "";
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            bottom: -60px;
+            right: -60px;
+        }
+
+        .brand-icon-wrapper {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 28px 36px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .brand-icon-wrapper i {
+            font-size: 3.5rem;
+            color: #fff;
+        }
+
+        .brand-tagline {
+            color: rgba(255, 255, 255, 0.90);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            z-index: 1;
+            margin-top: 0.5rem;
+        }
+
+        .brand-subtitle {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            margin-top: 0.3rem;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .register-title {
+            color: #1a3a6b;
+            font-weight: 800;
+        }
+
+        .form-control.is-invalid {
+            border-color: #e74a3b;
+        }
+
+        .form-control.is-invalid:focus {
+            box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.25);
+        }
+
+        .invalid-feedback {
+            display: block;
+            font-size: 0.80rem;
+        }
+
+        #btnRegister {
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        #btnRegister:disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+        }
+
+        #registerAlertContainer {
+            display: none;
+        }
+
+        #registerAlertContainer .alert {
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-container input {
+            padding-right: 50px !important;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #b7b9cc;
+            z-index: 10;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+        }
+
+        .password-toggle-icon:hover {
+            color: #4e73df;
+            background-color: rgba(78, 115, 223, 0.1);
+        }
+
+        .services-panel {
+            background: #f8f9fc;
+            border: 1px solid #e3e6f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+
+                            <div class="col-lg-5 d-none d-lg-flex bg-register-brand">
+                                <div class="brand-icon-wrapper">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <span class="brand-tagline">Aplicación de soporte</span>
+                                <span class="brand-subtitle">Registro de usuarios de soporte técnico</span>
+                            </div>
+
+                            <div class="col-lg-7">
+                                <div class="p-5">
+
+                                    <div class="text-center mb-4">
+                                        <h1 class="h4 register-title">Registrar usuario de soporte</h1>
+                                        <p class="text-muted small">Complete los datos del nuevo miembro del equipo de soporte</p>
+                                    </div>
+
+                                    <div id="registerAlertContainer"></div>
+
+                                    <form id="registerForm" class="user" novalidate>
+
+                                        <div class="form-group">
+                                            <label for="inputName" class="small font-weight-bold text-gray-800 mb-1">
+                                                Nombre *
+                                            </label>
+                                            <input type="text" class="form-control form-control-user" id="inputName"
+                                                name="name" autocomplete="given-name" placeholder="Nombre">
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <label for="inputFirstSurname"
+                                                    class="small font-weight-bold text-gray-800 mb-1">
+                                                    Primer apellido *
+                                                </label>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="inputFirstSurname" name="firstSurname"
+                                                    autocomplete="family-name" placeholder="Primer apellido">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="inputSecondSurname"
+                                                    class="small font-weight-bold text-gray-800 mb-1">
+                                                    Segundo apellido *
+                                                </label>
+                                                <input type="text" class="form-control form-control-user"
+                                                    id="inputSecondSurname" name="secondSurname"
+                                                    autocomplete="family-name" placeholder="Segundo apellido">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputRegEmail"
+                                                class="small font-weight-bold text-gray-800 mb-1">
+                                                Correo electrónico *
+                                            </label>
+                                            <input type="email" class="form-control form-control-user"
+                                                id="inputRegEmail" name="email" autocomplete="email"
+                                                placeholder="ejemplo@correo.com">
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                <label for="inputRegPassword"
+                                                    class="small font-weight-bold text-gray-800 mb-1">
+                                                    Contraseña *
+                                                </label>
+                                                <div class="password-container">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="inputRegPassword" name="password"
+                                                        autocomplete="new-password" placeholder="Contraseña">
+                                                    <i class="fas fa-eye password-toggle-icon"
+                                                        onclick="togglePasswordVisibility('inputRegPassword', this)"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <label for="inputConfirmPassword"
+                                                    class="small font-weight-bold text-gray-800 mb-1">
+                                                    Confirmar contraseña *
+                                                </label>
+                                                <div class="password-container">
+                                                    <input type="password" class="form-control form-control-user"
+                                                        id="inputConfirmPassword" name="confirmPassword"
+                                                        autocomplete="new-password" placeholder="Repetir contraseña">
+                                                    <i class="fas fa-eye password-toggle-icon"
+                                                        onclick="togglePasswordVisibility('inputConfirmPassword', this)"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="inputSupervisor"
+                                                    name="supervisor">
+                                                <label class="custom-control-label" for="inputSupervisor">
+                                                    Asignar como supervisor
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="small font-weight-bold text-gray-800 mb-2">
+                                                Servicios a los que da soporte *
+                                            </label>
+                                            <div id="servicesContainer" class="services-panel"></div>
+                                        </div>
+
+                                        <button type="submit" id="btnRegister"
+                                            class="btn btn-primary btn-user btn-block">
+                                            <i class="fas fa-user-plus mr-2"></i>Registrar usuario de soporte
+                                        </button>
+
+                                    </form>
+
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="login.html">Volver al inicio de sesión</a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/services-loader.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Nueva Solicitud - ConneXtion</title>
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <div class="container-fluid">
+                        <h1 class="h3 mb-4 text-gray-800">Registrar Nueva Solicitud</h1>
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div id="alertContainer"></div>
+                                <form id="formRequest">
+
+                                    <div class="form-group">
+                                        <label for="description">Descripción <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" id="description" rows="3" required
+                                                  placeholder="Describa el problema..."></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="contactPhone">Teléfono de contacto</label>
+                                        <input type="tel" class="form-control" id="contactPhone" placeholder="8888-8888">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="contactEmail">Correo de contacto</label>
+                                        <input type="email" class="form-control" id="contactEmail" placeholder="correo@ejemplo.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address">Dirección de referencia</label>
+                                        <input type="text" class="form-control" id="address" placeholder="San José, Barrio...">
+                                    </div>
+
+                                    <!--
+                                        Los value son los IDs de la tabla service en la BD.
+                                        Ajustar estos números según los registros reales en phpMyAdmin.
+                                    -->
+                                    <div class="form-group">
+                                        <label for="service">Servicio afectado <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="service" required>
+                                            <option value="">-- Seleccione un servicio --</option>
+                                            <option value="1">Internet</option>
+                                            <option value="2">Cable</option>
+                                            <option value="3">Telefonía fija</option>
+                                            <option value="4">Telefonía móvil</option>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i> Enviar solicitud
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="js/sb-admin-2.min.js"></script>
+        <script src="js/issue.js"></script>
+    </body>
+</html>
